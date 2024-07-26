@@ -1,0 +1,104 @@
+/* Create a separate CSS file and link it to your HTML file for better organization */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8f8c8c;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #dcdbcd; /* Adjust navbar background color */
+  }
+  
+  .navbar-brand {
+    color: white; /* Navbar brand text color */
+  }
+  
+  .nav-link {
+    color: white; /* Navbar link text color */
+  }
+  
+  .nav-link.active {
+    color: #ffc107; /* Active navbar link color */
+  }
+  
+  .searchBar {
+    width: 300px; /* Set a fixed width for the search input */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px; /* Add some padding */
+    transition: border-color 0.3s; /* Smooth border color transition */
+  }
+
+  .searchBar:focus {
+      border-color: #28a745; /* Change border color on focus */
+      outline: none; /* Remove default outline */
+  }
+
+  .btn-outline-success {
+      border-radius: 20px; /* Match the button's corners */
+      padding: 10px 20px; /* Add padding to the button */
+      margin-left: 10px; /* Space between input and button */
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  }
+
+  .btn-outline-success:hover {
+      background-color: #28a745; /* Change background on hover */
+      color: white; /* Change text color on hover */
+  }
+  /* Main content styles */
+  .container {
+    max-width: 960px; /* Adjust container width */
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  table {
+    /* width: 100%;
+    border-collapse: collapse; */
+    width: 100%;
+    margin: 10px auto;
+    border-collapse:collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+
+  table img {
+    max-width: auto;
+    border-radius: 8px; /* Rounded corners for images */
+    transition: transform 0.2s;
+  }
+
+  table img:hover {
+      transform: scale(1.1); /* Scale up the image on hover */
+  }
+
+  table a {
+      text-decoration: none;
+      color: #007bff;
+  }
+
+  table a:hover {
+      text-decoration: underline;
+      color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Responsive styles (optional) */
+  @media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+  }
+  

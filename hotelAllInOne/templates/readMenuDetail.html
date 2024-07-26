@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% load static %} {% block main %}
+<h1 align="center">Read Menu Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Hotel</th>
+                <th>Dish</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Add to Cart</th>
+                <th>Reviews</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in data %}
+            <tr>
+                {% if forloop.first %}
+                <td rowspan="{{ data|length }}">
+                    <img src="{{ x.hotel.H_image.url }}" height="250px" width="250px" alt="" /><br />
+                    {{ x.hotel.H_name }}<br />
+                    ({{ x.hotel.H_address }})
+                    <br /><br />
+                    <a href="#">Book Table</a>
+                </td>
+                {% endif %}
+
+                <td>{{ x.dish.name }}</td>
+                <td><img src="{{ x.dish.image.url }}" height="100px" width="120px" /></td>
+                <td>{{ x.dish.description }}</td>
+                <td>{{ x.dish.category }}</td>
+                <td>{{ x.dish.price }}</td>
+                <td><a href="/add_to_cart/{{ x.id }}">Add to Cart</a></td>
+                <td>
+                    {% with dish_reviews=x.review_set.all %}
+                        {% if dish_reviews %}
+                        <ul>
+                            {% for review in dish_reviews %}
+                            <li>
+                                <strong>{{ review.user.username }}</strong> - {{ review.rating }} &#11088;
+                                <!-- <p>{{ review.title }}</p>
+                                <p>{{ review.content }}</p> -->
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>No reviews available for this dish.</p>
+                        {% endif %}
+                    {% endwith %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock main %} {% block css %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 100px;
+    font-weight: 700;
+  }
+  table {
+    width:90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  th {
+    background-color: #f4f4f4;
+  }
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  /* a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            border-radius: 8px;
+        } */
+
+  table img {
+    border-radius: 5px; /* Rounded corners for images */
+    transition: transform 0.2s;
+  }
+
+  table img:hover {
+    transform: scale(1.05); /* Slight scale up on hover */
+  }
+
+  table a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  table a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Darker shade on hover */
+  }
+
+  /* Specific styles for hotel details */
+  hotel-image {
+    border-radius: 5px; /* Rounded corners for hotel image */
+    margin-bottom: 10px;
+  }
+</style>
+{% endblock css %}

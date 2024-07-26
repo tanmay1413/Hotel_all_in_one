@@ -1,0 +1,112 @@
+{% extends 'base.html' %}   
+
+{% load static %}
+
+
+{% block main %}
+    <h1 align='center'> View Hotel</h1>
+    <table align="center" border="">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Onwer Name</th>
+            <th>Image</th>
+            <th>Update</th>
+            <th>Delete</th>
+    
+        </tr>
+        
+        {% for x in  hotel %}
+            <tr>
+                <td>{{ x.H_name }}</td>
+                <td>{{ x.H_address }}</td>
+                <td>{{ x.H_onwer_name }}</td>
+                <td class="center-img"><img src="{{ x.H_image.url }}" class="center-img" alt="Hotel Image"></td>
+                <td><a href="/updateHotel/{{ x.id }}">Update</a></td>
+                <td><a href="/deleteHotel/{{ x.id }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+            
+        
+    </table>
+{% endblock main %}
+
+{% block css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 100px;
+            font-weight: 700;
+
+
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .center-img {
+            text-align: center;
+            border-radius: 8px;
+            /* height: 100px; */
+        }
+        .center-img img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock css %}
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Hotels</title>
+    
+
+</head>
+<body>
+    
+
+
+</body>
+</html>

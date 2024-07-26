@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+{% endblock css_link %}
+{% block main %}
+    <h1 class="heading">Cart</h1>
+    <table align="center" border="1">
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Remove from cart</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for hotel in hotels %}
+                {% if hotel.H_name %}
+                    <tr>
+                        <td colspan="8  " class="hotel_name" style="font-weight: bold;">
+                            {{ hotel.H_name }} <br>{{ hotel.H_address }}
+                        </td>
+                    </tr>
+                    {% for x in data %}
+                        {% if x.menu.hotel.H_name == hotel.H_name %}
+                            <tr>
+                                <td>{{ x.menu.dish.name }}</td>
+                                <td><img src="{{ x.menu.dish.image.url }}" height="100px" width="120px"></td>
+                                <td>{{ x.menu.dish.description }}</td>
+                                <td>{{ x.menu.dish.category }}</td>
+                                <td class="quantity"> 
+                                    <span >{{ x.quantity }}</span>
+                                    <form method="POST" action="{% url 'update_quantity' x.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" name="action" value="increase">+</button>
+                                        <button type="submit" name="action" value="decrease">-</button>
+                                    </form>
+                                </td>
+                                <td>{{ x.menu.dish.price }}</td>
+                                <td><a href="/remove_cart/{{ x.id }}">Remove from cart</a></td>
+                                
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            <tr class="total-cell">
+                <th>Total</th>
+                <td colspan="3"></td>
+                <td>{{ total_quantity }}</td>
+                <td>{{ total_price }}</td>
+                <td>
+                    <a href="/create_order" class="order-button">
+                        <button>Order</button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+{% endblock main %}

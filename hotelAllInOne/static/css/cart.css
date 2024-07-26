@@ -1,0 +1,100 @@
+/* General table styling */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 40px auto;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.heading{
+    text-align: center;
+    color: #333;
+    margin-top:90px;
+    font-weight: 700;
+}
+
+.hotel_name {
+    font-weight: bold;
+    text-align: center;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #090909;
+    text-align: center;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #111010;
+    text-align: center; 
+}
+
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+td img {
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* Button styling */
+button {
+    background-color: #a9440e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #d1d7d6;
+}
+/* Styling specific spans within the cart table */
+td.quantity {
+    text-align: center;
+}
+td span {
+    font-weight: 500;
+    color: #111212;
+}
+
+/* Link button styling */
+a {
+    text-decoration: none;
+    color: #009879;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #007f63;
+}
+
+/* Align total quantity and price cells */
+
+.total-cell th,
+.total-cell td {
+    font-weight: 500;
+    color: #111212;
+    padding: 10px;
+    
+}

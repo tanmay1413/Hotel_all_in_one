@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <h1 class="heading">order Details</h1>
+
+
+    <table align="center" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Quantity </th>
+            <th>Image</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        
+        {% for x in data %}
+            <tr>
+                <td>{{ x.product.dish.name }}</td>
+                <td>{{ x.quantity }}</td>
+                <td><img src="{{ x.product.dish.image.url }}" width="200px" height="200px" alt=""></td>
+                <td>{{ x.total_price }}</td>
+                <td><a href="/create_review/{{ x.product.dish.id }}">Add Review</a></td>
+            </tr>
+            {% endfor %}
+            <tr>
+            </tr>
+{% endblock main %}
+
+
+{% block css_link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+{% endblock css_link %}
+    

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+    <h1 align="center">View Menu</h1>
+
+        <table align="center" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Update</th>
+                <!-- <th>Add to Hotel</th> -->
+                <th>Delete</th>
+            </tr>
+            
+            {% for x in  menu %}
+            <tr>
+                <td>{{ x.name }}</td>
+                <td>{{ x.description }}</td>
+                <td>{{ x.category }}</td>
+                <td>{{ x.price }}</td>
+                <td><img src="{{ x.image.url }}" alt="Image of {{ x.name }}"  width="100%" height="100px"></td>
+                <td><a href="/update_Menu/{{ x.id }}">Update</a></td>
+                
+                <td><a href="/delete_menu/{{ x.id }}">Delete</a></td>
+            </tr>
+            
+            {% endfor %}
+
+        </table>
+{% endblock main %}
+
+
+{% block css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 100px;
+            font-weight: 700;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            border-radius: 8px;
+        }
+    </style>
+{% endblock css %}
+

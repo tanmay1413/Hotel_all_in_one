@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center"> Read Main Menu</h1>
+    <table align="center" border="1">
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Image</th>
+                <!-- <th>Description</th> -->
+                <th>Category</th>
+                <th>Price</th>
+                <!-- <th>Hotel Image</th> -->
+                <th>Hotel</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for x in data %}
+                <tr>
+                    <td> <a href="/readMenuDetail/{{ x.id }}">{{ x.dish.name }}</a></td>
+                    <td><a href="/readMenuDetail/{{ x.id }}"><img src="{{ x.dish.image.url }}" height="100px" width="120px"></a></td>
+                    <!-- <td>{{ x.dish.description }}</td> -->
+                    <td>{{ x.dish.category }}</td>
+                    <td>{{ x.dish.price }}</td>
+                    <!-- <td><img src="{{ x.hotel.H_image.url }}" height="100px" width="100px"></td> -->
+                    <td> <a href="/readMenuDetail/{{ x.id }}">{{ x.hotel.H_name }}</a>  ( {{ x.hotel.H_address }} )</td>
+                    
+                </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
